@@ -13,33 +13,21 @@
   (loop [sum (conj `() `(2 2 0) `(2 1 0) `(0 1 1)) cnt 3]
     (if (or (= cnt 40) (> (second (last sum)) 4000000))
       sum
-      (recur
-        (concat sum
-          (conj `()
+      (let [n_minus_one_middle (second (nth sum (- cnt 1)))
+            n_minus_two_middle (second (nth sum (- cnt 2)))
+            n_minus_one_last (nth (nth sum (- cnt 1)) 2)]
+        (recur
+          (concat sum
             (conj `()
-              ; use the third value as our sum total
-              (if (even? (second (nth sum (- cnt 1)))) ; check if previous middle value was even
-                (let [n_minus_one (nth (nth sum (- cnt 1)) 2)]
-                  (+
-                    n_minus_one ; here we need to take increase sum
-                    (nth
-                      (nth sum (- cnt 1)) 1
-                      ) ; here we need to take increase sum
-                    )
-                  )
-                (nth
-                  (nth sum (- cnt 1)) 2)) ; otherwise take the previous one
-              (+ ; set the second value as the new n
-                (second
-                  (nth sum (- cnt 1))) ; n - 1 middle value
-                (second
-                  (nth sum (- cnt 2)))) ; n - 2 middle value
-              (second ; set the first value as the new n-1
-                (nth sum (- cnt 2))) ; n - 2 middle value
+              (conj `()
+                (if (even? n_minus_one_middle) (+ n_minus_one_last n_minus_one_middle) n_minus_one_last)
+                (+ n_minus_one_middle n_minus_two_middle)
+                n_minus_two_middle
+                )
               )
             )
+          (inc cnt)
           )
-        (inc cnt)
         )
       )
     )
