@@ -8,6 +8,7 @@
 ; do not exceed four million, find the sum of the even-valued terms.
 ; Answer = 4613732
 
+; TODO: this is still pretty ugly, after refactoring. Come back later and fix
 (->>
   (loop [sum (conj `() `(2 2 0) `(2 1 0) `(0 1 1)) cnt 3]
     (if (or (= cnt 40) (> (second (last sum)) 4000000))
