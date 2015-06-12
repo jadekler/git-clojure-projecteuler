@@ -8,7 +8,6 @@
 ; do not exceed four million, find the sum of the even-valued terms.
 ; Answer = 4613732
 
-; This works... BUT IS VERY UGLY. TODO refactor
 (->>
   (loop [sum (conj `() `(2 2 0) `(2 1 0) `(0 1 1)) cnt 3]
     (if (or (= cnt 40) (> (second (last sum)) 4000000))
@@ -17,14 +16,14 @@
             n_minus_two_middle (second (nth sum (- cnt 2)))
             n_minus_one_last (nth (nth sum (- cnt 1)) 2)]
         (recur
-          (concat sum
+          (->>
             (conj `()
-              (conj `()
-                (if (even? n_minus_one_middle) (+ n_minus_one_last n_minus_one_middle) n_minus_one_last)
-                (+ n_minus_one_middle n_minus_two_middle)
-                n_minus_two_middle
-                )
+              (if (even? n_minus_one_middle) (+ n_minus_one_last n_minus_one_middle) n_minus_one_last)
+              (+ n_minus_one_middle n_minus_two_middle)
+              n_minus_two_middle
               )
+            (conj `())
+            (concat sum)
             )
           (inc cnt)
           )
