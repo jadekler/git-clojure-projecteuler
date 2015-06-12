@@ -6,32 +6,7 @@
 ;
 ; By considering the terms in the Fibonacci sequence whose values
 ; do not exceed four million, find the sum of the even-valued terms.
-
-; 1+2+3+5+8 = 19
-; 1+2+3+4+5 = 15
-
-(prn "Problem 2")
-
-;(->>
-;  (concat `(1 2) `(3 4))
-;  (prn))
-;
-;(->>
-;  (concat `(1 4) (conj `() 5))
-;  (prn))
-
-;(dotimes [n 5]
-;  (->>
-;    (concat `(1 4) (conj `() 5))
-;    (prn)
-;    ))
-
-;(->>
-;  (range 10)
-;  (map inc)
-;  (map + first)
-;  (prn)
-;  )
+; Answer = 4613732
 
 ; This works... BUT IS VERY UGLY. TODO refactor
 (prn (nth (last
