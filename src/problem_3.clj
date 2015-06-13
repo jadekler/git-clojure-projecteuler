@@ -6,8 +6,23 @@
 
 (loop [divisor 2 target 30]
   (when (< divisor target)
-    (loop []
-      (when (mod target divisor) 0
-        (prn divisor)
-        (recur divisor (/ target divisor))))
-    (recur (+ divisor 2) target)))
+    ;    (loop []
+    ;      (when (mod target divisor) 0
+    ;        (prn divisor)
+    ;        (recur divisor (/ target divisor))))
+
+    ;    (when (mod target divisor) 0
+    ;      (recur divisor (/ target divisor))
+    ;      )
+
+    (let [new_target (if (mod target divisor) 0) (quot target divisor) target]
+      (prn divisor new_target)
+      (recur (+ divisor 2) new_target))
+    ))
+
+;    (prn divisor target)
+;    (recur (+ divisor 2) target)
+;    ))
+
+;(let [a (if (> 5 4) "yes" "no")]
+;  (prn a))
