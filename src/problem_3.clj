@@ -6,5 +6,8 @@
 
 (loop [divisor 2 target 30]
   (when (< divisor target)
-    (prn divisor target)
+    (loop []
+      (when (mod target divisor) 0
+        (prn divisor)
+        (recur divisor (/ target divisor))))
     (recur (+ divisor 2) target)))
