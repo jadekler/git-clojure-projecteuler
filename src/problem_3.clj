@@ -2,7 +2,7 @@
 ;
 ; What is the largest prime factor of the number 600851475143 ?
 
-;(prn 13195)
+(prn "Problem 3 - work in progress")
 
 (loop [divisor 2 target 30]
   (when (< divisor target)
