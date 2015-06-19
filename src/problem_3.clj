@@ -4,6 +4,10 @@
 
 (prn "Problem 3 - work in progress")
 
+; NOTE: This block works - it divides by divisor and increases by divisor. Before this can happen, though,
+;       we need to divide the target by 2 until it no longer divides by 2
+; NOTE: We should only loop until sqrt(target)
+; see http://www.geeksforgeeks.org/print-all-prime-factors-of-a-given-number/
 (loop [divisor 2 target 30]
   (when (< divisor target)
     ;    (loop []
