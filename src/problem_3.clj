@@ -15,7 +15,7 @@
     ;      (recur divisor (/ target divisor))
     ;      )
 
-    (let [new_target (if (mod target divisor) 0) (quot target divisor) target]
+    (let [new_target (if (= (mod target divisor) 0) (quot target divisor) target)]
       (prn divisor new_target)
       (recur (+ divisor 2) new_target))
     ))
