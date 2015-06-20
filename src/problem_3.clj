@@ -4,21 +4,15 @@
 
 (prn "Problem 3 - work in progress")
 
+; Assumes target and divisor are (both) not even
 (defn divide-until-not-divisible [divisor target]
-  (prn "DIVIDE-UNTIL-NOT-DIVISIBLE" divisor target)
-  (if (= (mod target divisor) 0)
-    (divide-until-not-divisible divisor (/ target 2))
-    target))
-
-(defn divide-until-not-divisible-second [divisor target]
   (prn "DIVIDE-UNTIL-NOT-DIVISIBLE-TWO" divisor target)
   (if (< divisor (Math/sqrt target))
     (if (= (mod target divisor) 0)
-      (divide-until-not-divisible-second divisor (/ target divisor))
-      (divide-until-not-divisible-second (+ divisor 2) target))
+      (divide-until-not-divisible divisor (/ target divisor))
+      (divide-until-not-divisible (+ divisor 2) target))
     target))
 
 (->>
-  (divide-until-not-divisible 2 600851475143)
-  (divide-until-not-divisible-second 3)
+  (divide-until-not-divisible 3 600851475143)
   (prn "THE LARGEST PRIME FACTOR IS "))
