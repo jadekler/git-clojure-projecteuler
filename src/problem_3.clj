@@ -2,7 +2,7 @@
 ;
 ; What is the largest prime factor of the number 600851475143?
 
-(prn "Problem 3 - work in progress")
+(prn "Problem 3")
 
 ; Assumes target and divisor are (both) not even
 (defn divide-until-not-divisible [divisor target]
